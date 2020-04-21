@@ -6,7 +6,7 @@ from datetime import datetime
 import warnings
 
 
-# All_Fighter extracts and transforms Allied truck haul ticket data so it can then be loaded into the Acsess database.
+# All_Fighter extracts and transforms All truck haul ticket data so it can then be loaded into the Access database.
 class All_Merger(object):
 
     def __init__(self, all_in, all_out):
@@ -95,8 +95,8 @@ class All_Merger(object):
         print("A cada cerdo le llega su San Martín. \n")
 
 
-# RAC_Fighter extracts and transforms Reliable truck haul ticket data so it can then be loaded into the Access database.
-# RAC_Fighter also summariezed Reliable truck haul ticket data to help identify missing/extra ticket data.
+# RAC_Fighter extracts and transforms Rel truck haul ticket data so it can then be loaded into the Access database.
+# RAC_Fighter also summarized Reliable truck haul ticket data to help identify missing/extra ticket data.
 class RAC_Merger(object):
 
     def __init__(self, rac_in, rac_out, unit_price):
@@ -197,7 +197,7 @@ class RAC_Merger(object):
         print("A pan de quince días, hambre de tres semanas. \n")
 
 
-# Uti_Fighter compiles all Utility truck haul ticket data for import into Access database.
+# Uti_Fighter compiles all Uti truck haul ticket data for import into Access database.
 class Uti_Merger(object):
 
     def __init__(self, uti_in, uti_out):

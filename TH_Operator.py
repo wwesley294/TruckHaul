@@ -31,27 +31,27 @@ if __name__ == "__main__":
 
     def hostess():
         print("Today's special menu for detoxing with Gwyneth Paltrow: \n" + \
-              "1) Allied Merge \n" + \
-              "2) Reliable Merge \n" + \
-              "3) Reliable Merge Summary \n" + \
-              "4) Reliable TixMiner \n" + \
-              "5) Reliable WT Summary  \n" + \
-              "6) Reliable WT Breakdown \n" + \
-              "7) Utility Merge \n" + \
+              "1) A Merge \n" + \
+              "2) R Merge \n" + \
+              "3) R Merge Summary \n" + \
+              "4) R TixMiner \n" + \
+              "5) R WT Summary  \n" + \
+              "6) R WT Breakdown \n" + \
+              "7) U Merge \n" + \
               "8) Exit...Stage Left")
         user = input("Please enter your selection: ")
 
         # Option 1
         if user == "1":
-            allied = All_Merger(all_in, all_out)
-            allied.all_inspect()
-            allied.all_zipper()
+            all = All_Merger(all_in, all_out)
+            all.all_inspect()
+            all.all_zipper()
 
         # Option 2
         elif user == "2":
-            reliable = RAC_Merger(rac_in, rac_out, unit_price)
-            reliable.rac_inspect()
-            reliable.rac_zipper()
+            rel = RAC_Merger(rac_in, rac_out, unit_price)
+            rel.rac_inspect()
+            rel.rac_zipper()
 
         # Option 3
         elif user == "3":
@@ -79,9 +79,9 @@ if __name__ == "__main__":
 
         # Option 7
         elif user == "7":
-            utility = Uti_Merger(uti_in, uti_out)
-            utility.uti_inspect()
-            utility.uti_zipper()
+            uti = Uti_Merger(uti_in, uti_out)
+            uti.uti_inspect()
+            uti.uti_zipper()
 
         # Option 8
         elif user == "8":
