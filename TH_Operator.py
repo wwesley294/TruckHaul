@@ -4,39 +4,41 @@ import os
 from datetime import datetime
 from TH_Merger import All_Merger, RAC_Merger, Uti_Merger
 from TH_TixMiner import TixMiner
-from TH_WaitTime import WaitTime
+from TH_WaitTime import WaitTime, Breakdown
 import sys
-
 
 if __name__ == "__main__":
 
     # Space for All links
-    all_in = "N:\\Program Controls\\CTR Program Controls\\Truck Haul Program\\Allied-19938\\Temp\\"
-    all_out = "N:\\Program Controls\\CTR Program Controls\\Truck Haul Program\\Allied-19938\\Merge\\"
+    all_in = "user_input"
+    all_out = "user_input"
 
     # Space for RAC links
-    rac_in = "N:\\Program Controls\\CTR Program Controls\\Truck Haul Program\\ReliableAsphalt-84271\\Temp\\"
-    rac_out = "N:\\Program Controls\\CTR Program Controls\\Truck Haul Program\\ReliableAsphalt-84271\\Merge\\"
+    rac_in = "user_input"
+    rac_out = "user_input"
+    unit_price = "user_input"
 
     # Space for RAC-WT links
-    rac_wt = "N:\\Program Controls\\CTR Program Controls\\Scheduling\\Truck Haul Delay Fees\\2020\\02 - February\\"
+    foreman = "user_input"
+    rac_wt = "user_input"
     year = "2020"
-    month = "Feb"
+    month = "Jan"
 
     # Space for Uti links
-    uti_in = "N:\\Program Controls\\CTR Program Controls\\Truck Haul Program\\UtilityTransport-84275\\Temp\\"
-    uti_out = "N:\\Program Controls\\CTR Program Controls\\Truck Haul Program\\UtilityTransport-84275\\Merge\\"
+    uti_in = "user_input"
+    uti_out = "user_input"
+
 
     def hostess():
-        print ("Today's special menu for detoxing with Gwyneth Paltrow: \n" + \
-               "1) Allied Merge \n" + \
-               "2) Reliable Merge \n" + \
-               "3) Reliable Merge Summary \n" + \
-               "4) Reliable TixMiner \n" + \
-               "5) Reliable WT Summary  \n" + \
-               "6) Reliable WT Breakdown \n" + \
-               "7) Utility Merge \n" + \
-               "8) Exit...Stage Left")
+        print("Today's special menu for detoxing with Gwyneth Paltrow: \n" + \
+              "1) Allied Merge \n" + \
+              "2) Reliable Merge \n" + \
+              "3) Reliable Merge Summary \n" + \
+              "4) Reliable TixMiner \n" + \
+              "5) Reliable WT Summary  \n" + \
+              "6) Reliable WT Breakdown \n" + \
+              "7) Utility Merge \n" + \
+              "8) Exit...Stage Left")
         user = input("Please enter your selection: ")
 
         # Option 1
@@ -47,13 +49,13 @@ if __name__ == "__main__":
 
         # Option 2
         elif user == "2":
-            reliable = RAC_Merger(rac_in, rac_out)
+            reliable = RAC_Merger(rac_in, rac_out, unit_price)
             reliable.rac_inspect()
             reliable.rac_zipper()
 
         # Option 3
         elif user == "3":
-            summary = RAC_Merger(rac_in, rac_out)
+            summary = RAC_Merger(rac_in, rac_out, unit_price)
             summary.rac_summary()
 
         # Option 4
@@ -70,7 +72,10 @@ if __name__ == "__main__":
 
         # Option 6
         elif user == "6":
-            print ("Nothing to see here. \n")
+            bd = Breakdown(rac_wt, foreman, year, month)
+            w_list, s_list = bd.wt_foreman()
+            df = bd.wt_fuse()
+            bd.wt_cleaner(df, w_list, s_list)
 
         # Option 7
         elif user == "7":
@@ -80,12 +85,13 @@ if __name__ == "__main__":
 
         # Option 8
         elif user == "8":
-            print ("Careful Icarus.")
+            print("Careful Icarus.")
             sys.exit()
 
         # Loop back
         hostess()
 
+
     hostess()
 
-    
+
